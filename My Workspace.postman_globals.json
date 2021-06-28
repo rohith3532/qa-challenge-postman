@@ -1,0 +1,19 @@
+{
+	"id": "5d91ccba-0667-4522-8776-50ca9c48d7aa",
+	"values": [
+		{
+			"key": "category",
+			"value": "animal",
+			"enabled": true
+		},
+		{
+			"key": "base_url",
+			"value": "https://api.chucknorris.io",
+			"enabled": true
+		}
+	],
+	"name": "My Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-06-27T13:45:38.744Z",
+	"_postman_exported_using": "Postman/8.7.0-210616-0800"
+}

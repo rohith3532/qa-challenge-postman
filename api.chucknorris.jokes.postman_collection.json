@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "423925cc-7b07-4586-8dec-068a019787fa",
+		"name": "api.chucknorris.jokes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JokesCategories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  let list = JSON.parse(responseBody);\r",
+							"  let random_num = _.random(list.length);\r",
+							"let random_Category= list[random_num];\r",
+							" pm.globals.set(\"category\", random_Category)\r",
+							"});\r",
+							"pm.test(\"Has a non-empty body\", function () {\r",
+							"  pm.expect(pm.response.text().length).to.be.above(0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "*",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/jokes/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"jokes",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JokesSearchQuery",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Has a non-empty body\", function () {",
+							"  pm.expect(pm.response.text().length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "*",
+						"description": "The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path.",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/jokes/search?query={{category}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"jokes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{{category}}"
+						}
+					]
+				},
+				"description": "Free text search."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
